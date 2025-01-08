@@ -11,6 +11,15 @@ class GamingNetworkSockets(ConanFile):
         self.requires( "openssl/3.2.0")
         self.requires("protobuf/5.27.0")
 
+    def generate(self):
+
+        # Copy the Conan package dependencies the build folder
+        for dep in self.dependencies.values():
+            build_path = os.path.join(self.build_folder, "build", "conan_installed", dep.ref.name)
+            copy(self, "*.*", dep.cpp_info.includedir, os.path.join(build_path, os.path.basename(dep.cpp_info.includedir)))
+            copy(self, "*.*", dep.cpp_info.libdir, os.path.join(build_path, os.path.basename(dep.cpp_info.libdir)))
+            copy(self, "*.*", dep.cpp_info.bindir, os.path.join(build_path, os.path.basename(dep.cpp_info.bindir)))
+
     def layout(self):
         self.folders.build = os.path.join( ".." )
         self.folders.source = self.folders.build
