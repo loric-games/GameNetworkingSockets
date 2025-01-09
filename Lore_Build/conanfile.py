@@ -2,6 +2,17 @@ import os
 from conan import ConanFile
 from conan.tools.files import copy
 
+# References
+# https://loric.atlassian.net/wiki/spaces/EOE/pages/294289413/Adding+New+C+Libraries
+# https://github.com/ValveSoftware/GameNetworkingSockets/blob/master/BUILDING_WINDOWS_MANUAL.md
+
+# OpenSSL & GNS
+# https://github.com/ValveSoftware/GameNetworkingSockets/issues/118
+# https://github.com/ValveSoftware/GameNetworkingSockets/issues/232
+
+# OpenSSL Env
+# https://cmake.org/cmake/help/latest/module/FindOpenSSL.html
+
 class GamingNetworkSockets(ConanFile):
     settings = "os", "build_type"
     name = "gamenetworkingsockets"
